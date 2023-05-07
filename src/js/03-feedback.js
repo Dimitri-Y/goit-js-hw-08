@@ -16,7 +16,6 @@ const formChanged = event => {
 const submitBtnClick = event => {
   event.preventDefault();
   const formElements = event.currentTarget.elements;
-  const formData = new FormData(event.currentTarget);
   if (formElements.email.value === '' || formElements.message.value === '') {
     alert('Всі поля повинні бути не пусті!!!');
   } else {
