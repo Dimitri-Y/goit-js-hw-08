@@ -9,8 +9,14 @@ const onPlay = event => {
 };
 const onPlayThrottle = throttle(onPlay, 1000);
 
+const updateBrowser = () => {
+  if (localStorage.getItem('videoplayer-current-time') === null)
+    localStorage.setItem('videoplayer-current-time', 0);
+  player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+};
+
+updateBrowser();
 player.on('timeupdate', onPlayThrottle);
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
 
 //   .then(function (seconds) {})
 //   .catch(function (error) {
