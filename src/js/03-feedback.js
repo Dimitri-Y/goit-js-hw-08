@@ -19,14 +19,16 @@ const submitBtnClick = event => {
   if (formElements.email.value === '' || formElements.message.value === '') {
     alert('Всі поля повинні бути не пусті!!!');
   } else {
-    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+    const object = JSON.parse(localStorage.getItem('feedback-form-state'));
+    console.log(object);
+    // console.log(`{email:${object.email} message:${object.message}}`);
     event.currentTarget.reset();
-    localStorage.clear();
+    localStorage.removeItem('feedback-form-state');
   }
 };
 
 const updateBrowserform = () => {
-  formElements = submitForm.elements;
+  const formElements = submitForm.elements;
   try {
     let { email, message } = JSON.parse(
       localStorage.getItem('feedback-form-state')
